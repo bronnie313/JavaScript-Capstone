@@ -2,8 +2,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.js',
+  mode: 'development',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -13,11 +18,13 @@ module.exports = {
     rules: [
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'assets/resource',
         use: [{
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
             outputPath: 'fonts/',
+            publicPath: 'images/',
           },
         }],
       },
@@ -33,11 +40,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     watchFiles: ['./'],
-    port: 7070,
+    port: 8080,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-  ],
+
 };
