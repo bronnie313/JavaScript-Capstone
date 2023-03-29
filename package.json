@@ -10,7 +10,7 @@
   "scripts": {
     "test": "npm test",
     "build": "webpack",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
