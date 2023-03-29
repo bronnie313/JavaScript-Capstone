@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/displayShowsData.js":
+/*!*********************************!*\
+  !*** ./src/displayShowsData.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ displayShowsData)\n/* harmony export */ });\n/* harmony import */ var _fetchShowsData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchShowsData.js */ \"./src/fetchShowsData.js\");\n/* eslint-disable no-console */\r\n\r\n\r\nconst display = document.querySelector('.display');\r\ndisplay.innerHTML = 'Loading...';\r\n\r\n// Displays the TV show data in the HTML page\r\nfunction displayShowsData() {\r\n  (0,_fetchShowsData_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n    .then((showDataList) => {\r\n      // Use the showDataList to display information about each TV show\r\n      console.log(showDataList);\r\n\r\n      // Build the HTML string to display the TV show information\r\n      let html = '';\r\n      showDataList.forEach((showData) => {\r\n        html += '<div>';\r\n        html += `<h2>${showData.name}</h2>`;\r\n        html += `<img src=\"${showData.image.medium}\" alt=\"${showData.name}\">`;\r\n        html += `<p>${showData.summary}</p>`;\r\n        html += '<div class=\"button-container\">';\r\n        html += '<button class=\"reservations-button\">Reservations</button>';\r\n        html += '<button class=\"lie-button\">Lies</button>';\r\n        html += '</div>';\r\n        html += '</div>';\r\n      });\r\n\r\n      // Set the innerHTML of the display element to the HTML string\r\n      display.innerHTML = html;\r\n\r\n      // Add event listeners to the lie buttons\r\n      const lieButtons = document.querySelectorAll('.lie-button');\r\n      lieButtons.forEach((button) => {\r\n        button.addEventListener('click', () => {\r\n          const { showId } = button.dataset;\r\n          console.log(`User clicked lie button for show ID ${showId}`);\r\n          // Add your code here to handle the lie button click event\r\n        });\r\n      });\r\n\r\n      // Add event listeners to the reservation buttons\r\n      const reservationButtons = document.querySelectorAll('.reservation-button');\r\n      reservationButtons.forEach((button) => {\r\n        button.addEventListener('click', () => {\r\n          const { showId } = button.dataset;\r\n          console.log(`User clicked reservation button for show ID ${showId}`);\r\n          // Add your code here to handle the reservation button click event\r\n        });\r\n      });\r\n    })\r\n    .catch((error) => {\r\n      console.error(error);\r\n    });\r\n}\r\n\n\n//# sourceURL=webpack://kanban/./src/displayShowsData.js?");
+
+/***/ }),
+
+/***/ "./src/fetchShowsData.js":
+/*!*******************************!*\
+  !*** ./src/fetchShowsData.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ fetchShowsData)\n/* harmony export */ });\nconst apiKey = '{BSoXkkCLDpXvsVEWmeucPVwel0ajRbUB}'; // Replace with your actual API key\r\nconst numShows = 100; // Number of shows to retrieve\r\n\r\n// Fetches the TV show data and returns a Promise that resolves to an array of show data objects\r\nfunction fetchShowsData() {\r\n  return fetch(`https://api.tvmaze.com/shows?page=0&per_page=${numShows}`)\r\n    .then((response) => {\r\n      if (response.ok) {\r\n        // Parse the JSON response\r\n        return response.json();\r\n      }\r\n      throw new Error(`Request failed with status ${response.status}`);\r\n    })\r\n    .then((shows) => {\r\n      // Extract the IDs of the shows\r\n      const showIds = shows.map((show) => show.id);\r\n\r\n      // Make an individual request for each show to retrieve detailed information\r\n      return Promise.all(showIds.map((id) => {\r\n        const url = `https://api.tvmaze.com/shows/${id}?embed=cast`;\r\n        return fetch(url, {\r\n          headers: {\r\n            Accept: 'application/json',\r\n          },\r\n          params: {\r\n            apikey: apiKey,\r\n          },\r\n        }).then((response) => response.json());\r\n      }));\r\n    });\r\n}\r\n\n\n//# sourceURL=webpack://kanban/./src/fetchShowsData.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\r\n\r\nconst closeBtn = document.getElementById('close-button');\r\nconst openComments = document.getElementById('open-comments');\r\nconst showMovie = document.getElementById('movie');\r\n\r\nopenComments.addEventListener('click', () => {\r\n  showMovie.style.display = 'block';\r\n});\r\n\r\ncloseBtn.addEventListener('click', () => {\r\n  showMovie.style.display = 'none';\r\n});\r\n\n\n//# sourceURL=webpack://kanban/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _displayShowsData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./displayShowsData.js */ \"./src/displayShowsData.js\");\n\r\n\r\nconst closeBtn = document.getElementById('close-button');\r\nconst openComments = document.getElementById('open-comments');\r\nconst showMovie = document.getElementById('movie');\r\n\r\nopenComments.addEventListener('click', () => {\r\n  showMovie.style.display = 'block';\r\n});\r\n\r\ncloseBtn.addEventListener('click', () => {\r\n  showMovie.style.display = 'none';\r\n});\r\n\r\n\r\n\r\n(0,_displayShowsData_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n\n\n//# sourceURL=webpack://kanban/./src/index.js?");
 
 /***/ })
 

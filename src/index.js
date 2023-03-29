@@ -11,3 +11,7 @@ openComments.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   showMovie.style.display = 'none';
 });
+
+import displayShowsData from './displayShowsData.js';
+
+displayShowsData();
