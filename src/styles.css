@@ -1,4 +1,33 @@
 body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.show-card-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2%;
+  font-size: 11px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+  width: 68%;
+}
+
+.show-card-buttons {
+  border: 2px solid black;
+}
+
+.like-icon {
+  max-width: 20px;
   margin: 0;
 }
 
