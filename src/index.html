@@ -5,33 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capstone project</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Ef/E4g4tCCQ1tGvp/mi7bOeukS+ewdNTJW9XylT4gBm4+iv4QGmHs4weZGQ1aFFPs/ynSLbRzVyXf/7lN+I17A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-DlJ+PQvD8jkSOrQ5hYq3H5X9bbDk5y+yRKMV7zHMLJx5V7zCZg2lMyV3q5a9XbQQe8W04OvnRl1hG73fL7Vd8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="navbar">
-        <i class="fa-regular fa-popcorn logo"></i>
+        <!-- <i class="fa-regular fa-popcorn logo"></i> -->
+        <img src="./assets/movie.png" id="logo" alt="">
+        <div id="cont"></div>
         <ul class="items">
-            <li><a href="#">Spaceships(6)</a></li>
-            <li><a href="#">Planets</a></li>
-            <li><a href="#">Spaces</a></li>
+            <li><a href="#">Movies(204)</a></li>
+            <li><a href="#">Seasons</a></li>
+            <li><a href="#">Episodes</a></li>
         </ul>
     </header>
     <main>
-        <button id="open-comments">comments</button>
         <article id="movie" class="movie">
             <section class="comment-popup">
-                <div class="movie-info">
-                    <div  class="pop-img"><img src="" alt=""></div>
-                    <h2>Space 3</h2>
-                    <div class="info">
-                        <p>Fuel: Titanium</p>
-                        <p>weight: 400</p>
-                        <p>Length: 100,000</p>
-                        <p>Power: 100,000,000 </p>
-                    </div>
-                </div>
+                <div id="movie-info" class="movie-info"></div>
                 <button id="close-button">x</button>
+                <ul class="chart" id="chart"></ul>
+                <div id="comment-counter"></div>
+                <form class="form">
+                    <label for="imputName">Name:</label>
+                    <input type="text" id="user-input" name="username" required placeholder="Your Name"/>
+                    <label for="commentName">Comment</label>
+                    <textarea type="text" id="user-comment" name="comment" required placeholder="Your Comment"></textarea>
+                    <button class="submit" id="submit" data-index="${id}" type="submit">Comment</button>
+                </form>
             </section>
         </article>
     </main>
@@ -39,8 +40,7 @@
         <p>Created by Tjay, Bronnie and Kelvin Under MIT license</p>
     </footer>
 
-    <h1>Capstone project</h1>
-    <div class ="display"></div>
+    <ul id="forest"></ul>
     <script type ="module" src="index.js">
     </script>
 </body>

@@ -1,4 +1,33 @@
 body {
+  font-family: 'poppins', sans-serif;
+}
+
+.display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.show-card-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2%;
+  font-size: 11px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+  width: 68%;
+}
+
+.show-card-buttons {
+  border: 2px solid black;
+}
+
+.like-icon {
+  max-width: 20px;
   margin: 0;
 }
 
@@ -20,7 +49,7 @@ body {
   list-style: none;
   font-size: 100%;
   font-family: 'poppins', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 a {
@@ -35,6 +64,9 @@ footer {
   border: 1px solid;
   padding-left: 20px;
   width: 100%;
+  color: white;
+  background-color: seagreen;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .comment-popup {
@@ -44,7 +76,7 @@ footer {
   border-radius: 10px;
   padding: 10px;
   margin: 4em;
-  border: 1px solid;
+  border: 1px solid lightgray;
   height: 76vh;
   top: 0;
   position: fixed;
@@ -52,12 +84,11 @@ footer {
   right: 0;
   left: 0;
   background: #fff;
+  overflow-y: scroll;
 }
 
 .pop-img {
-  border: 1px solid;
-  width: 20%;
-  height: 20%;
+  width: 23%;
 }
 
 .info {
@@ -75,12 +106,16 @@ footer {
   width: 50%;
   height: 50%;
   margin-top: 20px;
+  margin-bottom: 37px;
 }
 
 #close-button {
   position: fixed;
   right: 0;
-  margin-right: 8em;
+  margin-right: 4em;
+  background: none;
+  font-size: x-large;
+  border: none;
 }
 
 .movie {
@@ -91,4 +126,108 @@ footer {
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+#logo {
+  width: 92%
+}
+
+#forest {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0;
+}
+
+.film-name {
+  margin: 0;
+}
+
+.film {
+  margin-bottom: 10px;
+}
+
+.sum {
+  margin: 2px;
+  font-size: 12px;
+  font-family: cursive;
+  font-weight: 900;
+  color: lightseagreen;
+}
+
+.movieName {
+  margin: 4px;
+  font-family: cursive;
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.comment-popup::-webkit-scrollbar {
+  width: 10px;
+}
+
+.comment-popup::-webkit-scrollbar-thumb {
+  background-color: rgb(66, 70, 68);
+  border-radius: 10px;
+}
+
+form > label {
+  font-size: 18px;
+  font-family: cursive;
+  padding-top: 8px;
+}
+
+#submit {
+  margin-top: 8px;
+  width: fit-content;
+  color: hsla(240,7%,100%,1);
+  padding: 5px;
+  background: seagreen;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+  align-self: end;
+}
+
+form > input, textarea {
+  outline: none;
+  border: 2px solid hsla(260,11%,85%,1);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#chart {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+}
+
+.comments-p {
+  background: hsla(240,7%,97%,1);
+  margin: 1px;
+  font-size: 18px;
+  padding: 5px;
+  color: hsla(0,0%,13%,1);
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#comment-counter {
+  color: darkslategrey;
+  font-style: oblique;
+  margin-bottom: 30px;
 }
