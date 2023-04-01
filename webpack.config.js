@@ -17,8 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        type: 'assets/resource',
+        test: /\.(woff(2)?|ttf|eot|svg|png|jif)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
           loader: 'file-loader',
           options: {

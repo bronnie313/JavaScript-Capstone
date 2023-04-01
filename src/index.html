@@ -10,19 +10,37 @@
 </head>
 <body>
     <header class="navbar">
-        <i class="fa-regular fa-popcorn logo"></i>
+        <!-- <i class="fa-regular fa-popcorn logo"></i> -->
+        <img src="./assets/movie.png" id="logo" alt="">
+        <div id="cont"></div>
         <ul class="items">
-            <li><a href="#">Spaceships(6)</a></li>
-            <li><a href="#">Planets</a></li>
-            <li><a href="#">Spaces</a></li>
+            <li><a href="#">Movies(204)</a></li>
+            <li><a href="#">Seasons</a></li>
+            <li><a href="#">Episodes</a></li>
         </ul>
     </header>
+    <main>
+        <article id="movie" class="movie">
+            <section class="comment-popup">
+                <div id="movie-info" class="movie-info"></div>
+                <button id="close-button">x</button>
+                <ul class="chart" id="chart"></ul>
+                <div id="comment-counter"></div>
+                <form class="form">
+                    <label for="imputName">Name:</label>
+                    <input type="text" id="user-input" name="username" required placeholder="Your Name"/>
+                    <label for="commentName">Comment</label>
+                    <textarea type="text" id="user-comment" name="comment" required placeholder="Your Comment"></textarea>
+                    <button class="submit" id="submit" data-index="${id}" type="submit">Comment</button>
+                </form>
+            </section>
+        </article>
+    </main>
     <footer>
         <p>Created by Tjay, Bronnie and Kelvin Under MIT license</p>
     </footer>
 
-    <h1>Capstone project</h1>
-    <div class ="display"></div>
+    <ul id="forest"></ul>
     <script type ="module" src="index.js">
     </script>
 </body>

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// mport './styles.css';
+// import './styles.css';
 import fetchShowsData from './fetchShowsData.js';
 
 const display = document.querySelector('.display');
@@ -65,6 +65,20 @@ export default function displayShowsData() {
         showCard.insertAdjacentHTML('beforeend', imageContainer.outerHTML + showCardHeader.outerHTML + buttonContainer.outerHTML);
 
         display.appendChild(showCard);
+      });
+
+      // Define the event listener function
+      function handleCommentButtonClick(event) {
+        const { showId } = event.target.dataset;
+        console.log(`User clicked comment button for show ID ${showId}`);
+      }
+
+      // Find all comment buttons on the page
+      const commentButtons = document.querySelectorAll('.comments-button');
+
+      // Add the event listener to each comment button
+      commentButtons.forEach((button) => {
+        button.addEventListener('click', handleCommentButtonClick);
       });
 
       // Add event listeners to the lie buttons

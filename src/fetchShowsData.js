@@ -1,5 +1,5 @@
 const apiKey = '{BSoXkkCLDpXvsVEWmeucPVwel0ajRbUB}'; // Replace with your actual API key
-const numShows = 100; // Number of shows to retrieve
+const numShows = 10; // Number of shows to retrieve
 
 // Fetches the TV show data and returns a Promise that resolves to an array of show data objects
 export default function fetchShowsData() {
