@@ -207,7 +207,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [Leaderboard](../../issues/).
+Feel free to check the [JavaScript-Capstone](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,7 +216,7 @@ Feel free to check the [Leaderboard](../../issues/).
 ## ⭐️ Show your support <a name="support"></a>
 
 If you like this project I'm grateful for your support but you can also give me a star at my github account
-https://github.com/bronnie313/leaderboard
+https://github.com/bronnie313/JavaScript-Capstone
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
