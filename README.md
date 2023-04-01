@@ -95,9 +95,10 @@ A project was built Using
 
 ### Key Features <a name="key-features"></a>
 
-- **Leader Name**
-- **Leader Score**
-- **The cycle**
+- **Home Page **
+- **Pop-up comment sections**
+- **Pop-up reservation sections**
+- **Likes**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,7 +106,7 @@ A project was built Using
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [See WEB here]()
+- [See WEB here](https://bronnie313.github.io/JavaScript-Capstone/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
