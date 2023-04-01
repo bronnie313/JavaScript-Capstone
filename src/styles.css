@@ -1,5 +1,6 @@
 body {
   font-family: 'poppins', sans-serif;
+  margin-bottom: 50px;
 }
 
 .display {
@@ -40,7 +41,7 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  margin: 2% 15%;
+  margin: 0 15%;
 }
 
 .items {
@@ -129,7 +130,7 @@ footer {
 }
 
 #logo {
-  width: 92%
+  width: 92%;
 }
 
 #forest {
@@ -187,7 +188,7 @@ form > label {
 #submit {
   margin-top: 8px;
   width: fit-content;
-  color: hsla(240,7%,100%,1);
+  color: hsla(240, 7%, 100%, 1);
   padding: 5px;
   background: seagreen;
   border: none;
@@ -196,9 +197,10 @@ form > label {
   align-self: end;
 }
 
-form > input, textarea {
+form > input,
+textarea {
   outline: none;
-  border: 2px solid hsla(260,11%,85%,1);
+  border: 2px solid hsla(260, 11%, 85%, 1);
   border-radius: 4px;
   padding: 5px;
 }
@@ -217,11 +219,11 @@ ul {
 }
 
 .comments-p {
-  background: hsla(240,7%,97%,1);
+  background: hsla(240, 7%, 97%, 1);
   margin: 1px;
   font-size: 18px;
   padding: 5px;
-  color: hsla(0,0%,13%,1);
+  color: hsla(0, 0%, 13%, 1);
   border-radius: 5px;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -230,4 +232,24 @@ ul {
   color: darkslategrey;
   font-style: oblique;
   margin-bottom: 30px;
+}
+
+.likeBtn {
+  color: white;
+  background: black;
+  border-radius: 6px;
+}
+
+.likeBtn:hover {
+  border: 1px solid lightgray;
+  color: black;
+  background-color: aqua;
+}
+
+.likes-section {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 10px;
+  align-items: center;
 }

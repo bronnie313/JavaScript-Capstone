@@ -23,7 +23,6 @@ module.exports = {
           options: {
             name: '[name].[ext]',
             outputPath: 'fonts/',
-            outputPath: 'images/',
             publicPath: 'images/',
           },
         }],

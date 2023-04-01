@@ -1,17 +1,20 @@
 import './styles.css';
 import movie from './assets/movie.png';
+import addComment from './modules/addComment.js';
+import displayComments from './displayCommnents.js';
+import addLike from './modules/addLikes.js';
 
 // import displayShowsData from './displayShowsData.js';
 // import fetchShowsData from './fetchShowsData';
 
 // displayShowsData();
-
 const logo = document.getElementById('logo');
 logo.src = movie;
 
 const container = document.getElementById('cont');
 container.appendChild(logo);
 
+// closing the comment section
 const closeBtn = document.getElementById('close-button');
 const showMovie = document.getElementById('movie');
 
@@ -31,9 +34,17 @@ const getData = async () => {
   return data;
 };
 
+//  get likes
+const getLikes = async () => {
+  const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ks3kK3cgFuKaK7pMQUGy/likes';
+  const res = await fetch(URL);
+  const data = await res.json();
+  return data;
+};
+
 // display data
 const forest = document.getElementById('forest');
-let id;
+
 const displayData = async () => {
   const data = await getData();
   data.forEach((data, i) => {
@@ -43,35 +54,27 @@ const displayData = async () => {
          <p class="film-name">${data.name}</p>
         <button class="commentBtn" data-index="${i}">comments</button> 
         <button class="reservBtn" data-index="${i}">reservation</button>
+        <div class="likes-section"><button class="likeBtn" data-index="${i}">Likes</button><div id="noLike"></div></div>
+        <i class="fa-regular fa-heart"></i>
       </div>
     `;
-    id = data.id;
+    // displaying likes
+    const displayLikes = async () => {
+      if (!data.error) {
+        const data = await getLikes();
+        const noLikeDiv = document.querySelectorAll('#noLike')[i];
+        noLikeDiv.innerHTML = `${data[i].likes} likes`;
+      }
+    };
+    displayLikes();
   });
 };
 
 displayData();
 
-// displaying comments
-const chart = document.getElementById('chart');
-const commentCounter = document.getElementById('comment-counter');
-const displayComments = async (id) => {
-  const data = await getComment(id);
-  const length = data?.length ?? 0;
-  commentCounter.innerHTML = `(${length}) comments`;
-  chart.innerHTML = '';
-  if (!data.error) {
-    data.forEach((comment) => {
-      const li = document.createElement('li');
-      li.className = 'chart-comments';
-      li.innerHTML = `<p class="comments-p">"${comment.comment}" By '${comment.username}' on "${comment.creation_date}"</p>`;
-      chart.appendChild(li);
-    });
-  }
-};
-
 forest.addEventListener('click', async (event) => {
   if (event.target.classList.contains('commentBtn')) {
-    const index = parseInt(event.target.dataset.index);
+    const index = parseInt(event.target.dataset.index, 10);
     const data = await getData();
     const selectedMovie = data[index];
     const movieInfo = document.getElementById('movie-info');
@@ -94,7 +97,7 @@ forest.addEventListener('click', async (event) => {
       await addComment(selectedMovie.id, userInput.value, userComment.value);
       userComment.value = '';
       userInput.value = '';
-      displayComments();
+      displayComments(selectedMovie.id);
     });
   }
 
@@ -103,36 +106,14 @@ forest.addEventListener('click', async (event) => {
     // const index = parseInt(event.target.dataset.index);
     // console.log(index)
   }
+
+  // check if the clicked element is a clicked button at the right index
+  if (event.target.classList.contains('likeBtn')) {
+    const index = parseInt(event.target.dataset.index, 10);
+    const data = await getData();
+    const selectedMovie = data[index];
+    // console.log(selectedMovie.id)
+    await addLike(selectedMovie.id);
+    // displayLikes(selectedMovie.id);
+  }
 });
-
-// Adding comment
-
-const addComment = async (id, username, comment) => {
-  const res = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/RaFwCQaj74dsBIFihdqp/comments',
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        item_id: id,
-        username,
-        comment,
-      }),
-    });
-  return res;
-};
-
-// getting comments
-const getComment = async (id) => {
-  const URL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/RaFwCQaj74dsBIFihdqp/comments?item_id=${id}`;
-  const res = await fetch(URL,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  const data = await res.json();
-  return data;
-};
