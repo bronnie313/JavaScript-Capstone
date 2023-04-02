@@ -190,10 +190,12 @@ Example:
 - GitHub: [@bronnie313](https://github.com/bronnie313)
 - Twitter: [@bisaso_r](https://twitter.com/bisaso_r)
 - LinkedIn: [Ronald Bisaso](https://linkedin.com/in/BisasoRonald)
+<br>
+<br>
 
 - GitHub: [@unleashedicon](https://github.com/Unleashedicon)
 - Twitter: [@kipkurui kelvin](https://twitter.com/KipkuruiKelvin3)
-- LinkedIn: [Kelvin Kipkurui](https://linkedin.com/in/Kelvin kipkurui)
+- LinkedIn: [Kelvin Kipkurui](https://linkedin.com/in/Kelvinkipkurui)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
