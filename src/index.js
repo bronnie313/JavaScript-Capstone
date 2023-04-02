@@ -123,12 +123,12 @@ forest.addEventListener('click', async (event) => {
         <button id="close-btn">x</button>
         <ul id="reservation-list"></ul>
         <form class="form" id='input-form'>
-          <h3>Add a reservation</h3>
-          <input type="text" id="user" name="username" required placeholder="Your Name"/>
-          <input type="text" id="startdate" name="startdate" placeholder="Start date" required>
-          <input type="text" id="enddate" name="enddate" placeholder="End date" required>
-          <button class="submit" id="submit" data-index="${selected.id}" type="submit">Reserve</button>
-        </form>
+        <h3>Add a reservation</h3>
+        <input type="text" id="user" name="username" required placeholder="Your Name"/>
+        <input type="text" id="startdate" name="startdate" placeholder="Start date (yyyy-mm-dd)" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Please enter the start date in yyyy-mm-dd format"/>
+        <input type="text" id="enddate" name="enddate" placeholder="End date (yyyy-mm-dd)" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Please enter the end date in yyyy-mm-dd format"/>
+        <button class="submit" id="submit" data-index="${selected.id}" type="submit">Reserve</button>
+      </form>      
       </div>
     `;
     const user = document.getElementById('user');
