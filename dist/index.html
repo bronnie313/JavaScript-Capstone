@@ -25,23 +25,24 @@
                 <div id="movie-info" class="movie-info"></div>
                 <button id="close-button">x</button>
                 <ul class="chart" id="chart"></ul>
-                <div id="comment-counter"></div>
                 <form class="form">
                     <label for="imputName">Name:</label>
                     <input type="text" id="user-input" name="username" required placeholder="Your Name"/>
-                    <label for="commentName">Comment</label>
+                    <label for="commentName">Comment:</label>
                     <textarea type="text" id="user-comment" name="comment" required placeholder="Your Comment"></textarea>
-                    <button class="submit" id="submit" data-index="${id}" type="submit">Comment</button>
+                    <button class="submit" id="submit" data-index="${id}" type="submit">Submit</button>
                 </form>
             </section>
         </article>
     </main>
+    <div id="reserve-section" class="reserve-show">
+    <section id="reservation-popup" class="popup">
+        <div id="reservation-info" class="movie-info"></div>
+    </section>
+</div>
     <footer>
         <p>Created by Tjay, Bronnie and Kelvin Under MIT license</p>
     </footer>
-
     <ul id="forest"></ul>
-    <script type ="module" src="index.js">
-    </script>
 </body>
 </html>

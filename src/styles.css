@@ -158,6 +158,14 @@ footer {
   color: lightseagreen;
 }
 
+.summary-text {
+  margin: 2px;
+  font-size: 12px;
+  font-family: cursive;
+  font-weight: 900;
+  color: lightseagreen;
+}
+
 .movieName {
   margin: 4px;
   font-family: cursive;
@@ -194,7 +202,7 @@ form > label {
   border: none;
   border-radius: 5px;
   box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
-  align-self: end;
+  align-self: start;
 }
 
 form > input,
@@ -228,6 +236,7 @@ ul {
   font-family: 'Courier New', Courier, monospace;
 }
 
+
 #comment-counter {
   color: darkslategrey;
   font-style: oblique;
@@ -252,4 +261,81 @@ ul {
   width: 50%;
   margin-top: 10px;
   align-items: center;
+}
+
+.popup {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 4em;
+  border: 1px solid lightgray;
+  height: 76vh;
+  top: 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #fff;
+  overflow-y: scroll;
+  gap: 10px;
+}
+
+.popup.show {
+  display: flex;
+}
+
+#reservation-list {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.info-ms {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0 10px 0;
+  align-items: center;
+}
+
+#reservation-info {
+  margin: 0;
+  padding-top: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+#close-btn {
+  position: fixed;
+  right: 0;
+  margin-right: 4em;
+  background: none;
+  font-size: x-large;
+  border: none;
+  top: 80px;
+}
+
+.reserve-show {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.reserve-show.show {
+  display: block;
+}
+
+#input-form input {
+  margin-bottom: 10px;
 }

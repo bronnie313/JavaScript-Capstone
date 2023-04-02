@@ -3,6 +3,7 @@ import movie from './assets/movie.png';
 import addComment from './modules/addComment.js';
 import displayComments from './displayCommnents.js';
 import addLike from './modules/addLikes.js';
+import { addReservation, displayReservations } from './modules/reservationAPI.js';
 
 // import displayShowsData from './displayShowsData.js';
 // import fetchShowsData from './fetchShowsData';
@@ -103,8 +104,56 @@ forest.addEventListener('click', async (event) => {
 
   // check if the clicked element is a reservation button
   if (event.target.classList.contains('reservBtn')) {
-    // const index = parseInt(event.target.dataset.index);
-    // console.log(index)
+    const index = parseInt(event.target.dataset.index, 10);
+    const data = await getData();
+    const selected = data[index];
+    const moviedetails = document.getElementById('reservation-info');
+    moviedetails.innerHTML = `
+      <img class="pop-img" src=${selected.image.medium}>
+      <p class="movieName">${selected.name}</p>
+      <div class="info-ms">
+        <p class="sum">LANGUAGE: ${selected.language}</p>
+        <p class="sum">STATUS: ${selected.status}</p>
+        <p class="sum">PREMIERED: ${selected.premiered}</p>
+        <p class="sum">ENDED: ${selected.ended}</p>
+        <br>
+        <br>
+        <p class="sum">SUMMARY:</p>
+        <div class="summary-text">${selected.summary}</div>
+        <button id="close-btn">x</button>
+        <ul id="reservation-list"></ul>
+        <form class="form" id='input-form'>
+          <h3>Add a reservation</h3>
+          <input type="text" id="user" name="username" required placeholder="Your Name"/>
+          <input type="text" id="startdate" name="startdate" placeholder="Start date" required>
+          <input type="text" id="enddate" name="enddate" placeholder="End date" required>
+          <button class="submit" id="submit" data-index="${selected.id}" type="submit">Reserve</button>
+        </form>
+      </div>
+    `;
+    const user = document.getElementById('user');
+    const startdate = document.getElementById('startdate');
+    const enddate = document.getElementById('enddate');
+    const reservBtn = document.querySelector('#reservation-info .submit');
+    reservBtn.dataset.index = selected.id;
+    reservBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await addReservation(selected.id, user.value, startdate.value, enddate.value);
+      user.value = '';
+      startdate.value = '';
+      enddate.value = '';
+      displayReservations(selected.id);
+    });
+    displayReservations(selected.id);
+    const closeButton = document.getElementById('close-btn');
+    const reservePopup = document.getElementById('reservation-popup');
+    reservePopup.classList.add('show');
+    const reservesection = document.getElementById('reserve-section');
+    reservesection.classList.add('show');
+    closeButton.addEventListener('click', () => {
+      reservePopup.classList.remove('show');
+      reservesection.classList.remove('show');
+    });
   }
 
   // check if the clicked element is a clicked button at the right index
