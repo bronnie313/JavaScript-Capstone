@@ -2,7 +2,7 @@ import './styles.css';
 import movie from './assets/movie.png';
 import addComment from './modules/addComment.js';
 import displayComments from './displayCommnents.js';
-import addLike from './modules/addLikes.js';
+import { addLike, getlike } from './modules/addLikes.js';
 import { addReservation, displayReservations } from './modules/reservationAPI.js';
 
 // import displayShowsData from './displayShowsData.js';
@@ -35,14 +35,6 @@ const getData = async () => {
   return data;
 };
 
-//  get likes
-const getLikes = async () => {
-  const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ks3kK3cgFuKaK7pMQUGy/likes';
-  const res = await fetch(URL);
-  const data = await res.json();
-  return data;
-};
-
 // display data
 const forest = document.getElementById('forest');
 
@@ -55,19 +47,11 @@ const displayData = async () => {
          <p class="film-name">${data.name}</p>
         <button class="commentBtn" data-index="${i}">comments</button> 
         <button class="reservBtn" data-index="${i}">reservation</button>
-        <div class="likes-section"><button class="likeBtn" data-index="${i}">Likes</button><div id="noLike"></div></div>
+        <div class="likes-section"><button class="likeBtn" data-index="${i}">Like</button><div id="nolikes"></div></div>
         <i class="fa-regular fa-heart"></i>
       </div>
     `;
     // displaying likes
-    const displayLikes = async () => {
-      if (!data.error) {
-        const data = await getLikes();
-        const noLikeDiv = document.querySelectorAll('#noLike')[i];
-        noLikeDiv.innerHTML = `${data[i].likes} likes`;
-      }
-    };
-    displayLikes();
   });
 };
 
@@ -158,11 +142,21 @@ forest.addEventListener('click', async (event) => {
 
   // check if the clicked element is a clicked button at the right index
   if (event.target.classList.contains('likeBtn')) {
-    const index = parseInt(event.target.dataset.index, 10);
-    const data = await getData();
-    const selectedMovie = data[index];
-    // console.log(selectedMovie.id)
-    await addLike(selectedMovie.id);
-    // displayLikes(selectedMovie.id);
+    const id = event.target.dataset.index;
+    const likeDiv = event.target.parentNode.querySelector('#nolikes'); // get the corresponding like div
+    const button = event.target;
+
+    button.disabled = true; // disable the button
+
+    // make the API call to add a like
+    await addLike(id);
+
+    // make the API call to get the updated number of likes
+    const likes = await getlike(id);
+    const itemLikes = likes.find((item) => item.item_id === id);
+
+    // update the like div text and enable the button again
+    likeDiv.textContent = `Likes (${itemLikes.likes})`;
+    button.disabled = false;
   }
 });
